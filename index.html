@@ -1,26 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmeldeformular</title>
-    </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmeldung zur Gästeliste</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #222;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #000;
+    }
+
+    #confirmation {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    #confirmation p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    #confirmation small {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
 <body>
 
-    <h1>Anmeldung zur Gästeliste</h1>
+  <div id="confirmation">
+    <p>Vielen Dank für Ihre Teilnahme,<br>wir freuen uns auf Ihren Besuch.</p>
+    <small>Software powered by Vuneco GmbH</small>
+  </div>
+
+  <div class="container">
+    <h2>Anmeldung zur Gästeliste</h2>
 
     <form id="guestForm" action="https://script.google.com/macros/s/AKfycbyZ3bHW2ltmBfNkj25-FBMc1pN6ZWZhghsd_hW-hZ674HALgKMWTpUhQo_aPh9R5uZOYg/exec" method="POST">
-        <label for="vorname">Vorname:</label><br>
-        <input type="text" id="vorname" name="vorname" required><br><br>
-
-        <label for="nachname">Nachname:</label><br>
-        <input type="text" id="nachname" name="nachname" required><br><br>
-
-        <label for="anzahl">Anzahl der Personen:</label><br>
-        <input type="number" id="anzahl" name="anzahl" min="1" required><br><br>
-
-        <button type="submit">Jetzt anmelden</button>
+      <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
+      <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
+      <input type="number" id="anzahl" name="anzahl" placeholder="Anzahl der Personen" min="1" required>
+      <button type="submit">Jetzt anmelden</button>
     </form>
+  </div>
 
-    </body>
+  <script>
+    const form = document.getElementById('guestForm');
+    const confirmation = document.getElementById('confirmation');
+    const container = document.querySelector('.container');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          container.style.display = 'none';
+          confirmation.style.display = 'block';
+
+          setTimeout(() => {
+            confirmation.style.display = 'none';
+            container.style.display = 'block';
+            form.reset(); // Leert die Felder
+          }, 10000);
+        } else {
+          alert("Fehler beim Speichern. Bitte erneut versuchen.");
+        }
+      } catch (error) {
+        alert("Verbindung fehlgeschlagen: " + error.message);
+      }
+    });
+  </script>
+</body>
 </html>
+
