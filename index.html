@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anmeldung zur Gästeliste Schuljubiläums Gala 2025</title>
   <style>
     * {
@@ -12,23 +12,22 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
     }
 
     .container {
       background: white;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       text-align: center;
       width: 100%;
       max-width: 400px;
-      margin-bottom: 40px;
+      margin-top: 60px;
     }
 
     input, button {
@@ -52,42 +51,63 @@
     }
 
     #confirmation {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #dff0d8;
-  color: #3c763d;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  text-align: center;
-  width: 90%;
-  max-width: 480px;
-  z-index: 1000;
-}
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 50px 30px 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      z-index: 1000;
+    }
 
-#confirmation p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
-}
+    #confirmation p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+    }
 
-#confirmation small {
-  display: block;
-  font-size: 12px;
-  color: #777;
-  margin-top: 15px;
-}
+    #confirmation small {
+      font-size: 12px;
+      color: #888;
+      display: block;
+      margin-top: 12px;
+    }
 
+    #confirmation img {
+      height: 22px;
+      margin-top: 6px;
+      opacity: 0.6;
+    }
+
+    .image-row {
+      margin-top: 40px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 800px;
+    }
+
+    .image-row img {
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
 
     footer {
       background-color: #fff;
       width: 100%;
       max-width: 600px;
       padding: 15px 20px;
-      margin-top: auto;
+      margin-top: 40px;
       box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
       display: flex;
       justify-content: space-between;
@@ -103,31 +123,44 @@
     footer img {
       height: 28px;
     }
+
+    @media (max-width: 480px) {
+      .container {
+        margin-top: 30px;
+        padding: 30px 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div id="confirmation">
-  <p>
-    Das St. Michael Gymnasium bedankt sich für Ihre Teilnahme.<br>
-    Wir freuen uns auf Ihren Besuch.
-  </p>
-  <small>Software powered by Vuneco GmbH</small>
-</div>
+    <p>
+      Das St. Michael Gymnasium bedankt sich für Ihre Teilnahme.<br>
+      Wir freuen uns auf Ihren Besuch.
+    </p>
+    <small>Software Powered by Vuneco GmbH</small>
+    <img src="https://vcard.vuneco.com/avatars/vuneco-white.png" alt="Vuneco Logo">
+  </div>
 
   <div class="container">
     <h2>Anmeldung zur Gästeliste</h2>
-
     <form id="guestForm" action="https://script.google.com/macros/s/AKfycbyZ3bHW2ltmBfNkj25-FBMc1pN6ZWZhghsd_hW-hZ674HALgKMWTpUhQo_aPh9R5uZOYg/exec" method="POST">
-      <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
-      <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
-      <input type="number" id="anzahl" name="anzahl" placeholder="Anzahl der Personen" min="1" required>
+      <input type="text" name="vorname" placeholder="Vorname" required />
+      <input type="text" name="nachname" placeholder="Nachname" required />
+      <input type="number" name="anzahl" placeholder="Anzahl der Personen" min="1" required />
       <button type="submit">Jetzt anmelden</button>
     </form>
   </div>
 
+  <div class="image-row">
+    <img src="https://via.placeholder.com/150x100?text=Bild+1" alt="Schulbild 1" />
+    <img src="https://via.placeholder.com/150x100?text=Bild+2" alt="Schulbild 2" />
+    <img src="https://via.placeholder.com/150x100?text=Bild+3" alt="Schulbild 3" />
+  </div>
+
   <footer>
-    <span>Software powered by Vuneco GmbH</span>
+    <span>Software Powered by Vuneco GmbH</span>
     <img src="https://vcard.vuneco.com/avatars/vuneco-white.png" alt="Vuneco Logo">
   </footer>
 
@@ -136,14 +169,14 @@
     const confirmation = document.getElementById('confirmation');
     const container = document.querySelector('.container');
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const formData = new FormData(form);
 
       try {
         const response = await fetch(form.action, {
           method: 'POST',
-          body: formData
+          body: formData,
         });
 
         if (response.ok) {
@@ -156,12 +189,13 @@
             form.reset();
           }, 10000);
         } else {
-          alert("Fehler beim Speichern. Bitte erneut versuchen.");
+          alert('Fehler beim Speichern. Bitte erneut versuchen.');
         }
       } catch (error) {
-        alert("Verbindung fehlgeschlagen: " + error.message);
+        alert('Verbindung fehlgeschlagen: ' + error.message);
       }
     });
   </script>
 </body>
 </html>
+
