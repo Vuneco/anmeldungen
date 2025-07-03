@@ -52,31 +52,35 @@
     }
 
     #confirmation {
-      display: none;
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #dff0d8;
-      color: #3c763d;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      text-align: center;
-      z-index: 1000;
-    }
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 480px;
+  z-index: 1000;
+}
 
-    #confirmation p {
-      margin: 0;
-      font-size: 16px;
-    }
+#confirmation p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
 
-    #confirmation small {
-      display: block;
-      margin-top: 10px;
-      font-size: 12px;
-      color: #555;
-    }
+#confirmation small {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-top: 15px;
+}
+
 
     footer {
       background-color: #fff;
@@ -104,9 +108,12 @@
 <body>
 
   <div id="confirmation">
-    <p>Vielen Dank für Ihre Teilnahme,<br>wir freuen uns auf Ihren Besuch.</p>
-    <small>Software powered by Vuneco GmbH</small>
-  </div>
+  <p>
+    Das St. Michael Gymnasium bedankt sich für Ihre Teilnahme.<br>
+    Wir freuen uns auf Ihren Besuch.
+  </p>
+  <small>Software powered by Vuneco GmbH</small>
+</div>
 
   <div class="container">
     <h2>Anmeldung zur Gästeliste</h2>
