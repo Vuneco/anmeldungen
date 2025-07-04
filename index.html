@@ -210,36 +210,39 @@
   </footer>
 
   <script>
-    document.getElementById("confirmation").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-    document.getElementById("gform").reset();
+    const form = document.getElementById("guestForm");
+const container = document.querySelector(".container");
+const confirmation = document.getElementById("confirmation");
+const overlay = document.getElementById("overlay");
 
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
 
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (response.ok) {
-          container.style.display = 'none';
-          confirmation.style.display = 'block';
-
-          setTimeout(() => {
-  document.getElementById("confirmation").style.display = "none";
-  document.getElementById("overlay").style.display = "none";
-}, 10000);
-
-        } else {
-          alert('Fehler beim Speichern. Bitte erneut versuchen.');
-        }
-      } catch (error) {
-        alert('Verbindung fehlgeschlagen: ' + error.message);
-      }
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
     });
+
+    if (response.ok) {
+      form.reset();
+      container.style.opacity = '0.3';
+      overlay.style.display = 'block';
+      confirmation.style.display = 'block';
+
+      setTimeout(() => {
+        confirmation.style.display = 'none';
+        overlay.style.display = 'none';
+        container.style.opacity = '1';
+      }, 10000);
+    } else {
+      alert('Fehler beim Speichern. Bitte erneut versuchen.');
+    }
+  } catch (error) {
+    alert('Verbindung fehlgeschlagen: ' + error.message);
+  }
+});
   </script>
 </body>
 </html>
